@@ -18,6 +18,19 @@ public class PaisService {
         return paisRepository.findAll();
     }
 
+    public List<Pais> getPaisPorId(List<Long> ids) {
+        return paisRepository.findAllById(null);
+    }
+
+    public Pais postNovoPais(Pais novoPais) {
+        return paisRepository.save(novoPais);
+        
+    }
+
+    public void deletePais(long id) {
+        paisRepository.deleteAllById(null);
+    }
+
     
     
 }
