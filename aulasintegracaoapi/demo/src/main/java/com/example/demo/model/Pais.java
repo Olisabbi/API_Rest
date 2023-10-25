@@ -1,4 +1,4 @@
-package model;
+package com.example.demo.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ public class Pais {
     @Column(name = "id_pais")
     private Integer id;
 
-    @Column(name = "id_nome")
+    @Column(name = "nome_pais")
     private String nome;
 
     public Integer getId() {

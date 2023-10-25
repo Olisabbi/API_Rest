@@ -1,0 +1,1 @@
+INSERT INTO PAIS (id_pais, nome_pais) VALUES ('1','Brasil')

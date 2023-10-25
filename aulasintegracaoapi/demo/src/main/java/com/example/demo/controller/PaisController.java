@@ -1,4 +1,4 @@
-package controller;
+package com.example.demo.controller;
 
 import java.util.List;
 
@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Collections;
+
+import com.example.demo.model.Pais;
+import com.example.demo.service.PaisService;
 
 
-import model.Pais;
-import service.PaisService;
+
 
 @RestController
 @RequestMapping("/paises")
@@ -33,7 +36,8 @@ public class PaisController {
 
     @GetMapping("/{id}")
     public List<Pais> getPaisPorId(@PathVariable Long id) {
-       return paisService.getPaisPorId(null);
+        List<Long> idList = Collections.singletonList(id);
+        return paisService.getPaisPorId(idList);
 
     }
 

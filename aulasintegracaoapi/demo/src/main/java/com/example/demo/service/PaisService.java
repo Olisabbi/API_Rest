@@ -1,9 +1,10 @@
-package service;
+package com.example.demo.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import model.Pais;
-import repository.PaisRepository;
+
+import com.example.demo.model.Pais;
+import com.example.demo.repository.PaisRepository;
 
 @Service
 public class PaisService {
