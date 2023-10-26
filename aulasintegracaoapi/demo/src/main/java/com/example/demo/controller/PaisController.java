@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.Collections;
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
 import com.example.demo.model.Pais;
 import com.example.demo.service.PaisService;
 
@@ -43,15 +40,16 @@ public class PaisController {
 
     }
 
-    @PostMapping("/novo")
-    public ResponseEntity<Pais> postNovoPais(@RequestBody Pais postPais){
-        Pais paisPost = paisService.postNovoPais(postPais);
-        return ResponseEntity.status(HttpStatus.CREATED).body(paisPost);
+   
+    @PostMapping
+    public Pais postPais(@RequestBody Pais pais) {
+       return paisService.postNovoPais(pais);
     }
+
 
     @GetMapping("/D{id}")
     public ResponseEntity<Pais> deletePais(@PathVariable Long id) {
-        paisService.deletePais(0);
+        paisService.deletePais(id);
         return ResponseEntity.noContent().build();
 
     }
