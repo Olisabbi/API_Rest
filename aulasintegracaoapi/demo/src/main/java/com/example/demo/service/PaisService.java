@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
+
 import java.util.List;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.model.Pais;
 import com.example.demo.repository.PaisRepository;
 
@@ -19,8 +19,8 @@ public class PaisService {
         return paisRepository.findAll();
     }
 
-    public List<Pais> getPaisPorId(List<Long> ids) {
-        return paisRepository.findAllById(null);
+    public List<Pais> getPaisPorId(List<Integer> ids) {
+        return paisRepository.findAllById(ids);
     }
 
     public Pais postNovoPais(Pais novoPais) {

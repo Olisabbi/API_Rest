@@ -1,15 +1,17 @@
 package com.example.demo.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Collections;
+
 
 import com.example.demo.model.Pais;
 import com.example.demo.service.PaisService;
@@ -35,13 +37,13 @@ public class PaisController {
     }
 
     @GetMapping("/{id}")
-    public List<Pais> getPaisPorId(@PathVariable Long id) {
-        List<Long> idList = Collections.singletonList(id);
+    public List<Pais> getPaisPorId(@PathVariable Integer id) {
+        List<Integer> idList = Collections.singletonList(id);
         return paisService.getPaisPorId(idList);
 
     }
 
-    @GetMapping("/novo")
+    @PostMapping("/novo")
     public ResponseEntity<Pais> postNovoPais(@RequestBody Pais postPais){
         Pais paisPost = paisService.postNovoPais(postPais);
         return ResponseEntity.status(HttpStatus.CREATED).body(paisPost);
