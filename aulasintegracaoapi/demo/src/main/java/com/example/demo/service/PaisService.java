@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Pais;
 import com.example.demo.repository.PaisRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class PaisService {
 
@@ -28,10 +30,12 @@ public class PaisService {
         
     }
 
-    public void deletePais(long id) {
-        paisRepository.deleteAllById(null);
+    public void deletePais(Integer id) {
+        if (!paisRepository.existsById(id)) {
+            throw new EntityNotFoundException("Pais com id " + id + " não encontrado");
+        }
+        paisRepository.deleteById(id);
     }
-
     
     
 }
