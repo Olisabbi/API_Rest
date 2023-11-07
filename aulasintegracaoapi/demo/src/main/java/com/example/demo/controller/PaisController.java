@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Pais;
+import com.example.demo.repository.PaisRepository;
 import com.example.demo.service.PaisService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 
@@ -22,10 +25,12 @@ import com.example.demo.service.PaisService;
 @RequestMapping("/paises")
 public class PaisController {
 
-    private  final PaisService paisService;
+    private final PaisService paisService;
+    private final PaisRepository paisRepository;
 
-    public PaisController (PaisService paisService){
+    public PaisController (PaisService paisService, PaisRepository paisRepository){
         this.paisService = paisService;
+        this.paisRepository = paisRepository;
     }
 
 
@@ -50,24 +55,19 @@ public class PaisController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePais(@PathVariable Integer id) {
-        try {
-            paisService.deletePais(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            // Tratar exceções apropriadas aqui
+        if (!paisRepository.existsById(id)) {
+            throw new EntityNotFoundException("Pais com id " + id + " não encontrado");
+        } paisRepository.deleteById(id);
+          
+            try {
+               paisService.deletePais(id);
+                 return ResponseEntity.ok().build();
+        
+            } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
         }
     }
-         
-   /* @DeleteMapping("/{id}")
-        public ResponseEntity<Pais> deletePais(@PathVariable Long id) {
-        paisService.deletePais(id);
-        return ResponseEntity.noContent().build();
-
-    }*/
-        
-            
-        
+               
     
 }
 
