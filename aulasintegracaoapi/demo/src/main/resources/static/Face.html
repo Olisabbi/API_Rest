@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paises</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pais</title>
 </head>
 <body>
-
-<h2>Formulário para adicionar novo Pais</h2>
-
-<form action="localhost:8080/Paises/novo" method="post">
-  <label for="id">ID:</label><br>
-  <input type="text" id="id" name="id"><br>
-  <label for="nome">Nome:</label><br>
-  <input type="text" id="nome" name="nome"><br><br>
-  <input type="submit" value="Submit">
-</form> 
-
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">ID</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Pais</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Autorizo Compartilhar esse Páis</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+  
 </body>
 </html>
-
